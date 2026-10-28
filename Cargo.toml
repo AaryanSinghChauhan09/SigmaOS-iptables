@@ -1,0 +1,10 @@
+[package]
+name = "sigmaos_iptables"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+[lib]
+name = "sigmaos_iptables"
+path = "src/lib.rs"
