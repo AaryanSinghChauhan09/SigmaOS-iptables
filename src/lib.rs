@@ -1,44 +1,16 @@
-//! SigmaOS-iptables - SigmaOS Component
+//! SigmaOS-iptables — iptables/netfilter model.
 //!
-//! Essential infrastructure component for SigmaOS.
+//! Models iptables chains, tables (filter/nat/mangle/raw),
+//! rule matching criteria, and targets. Deterministic and std-only.
 
-use anyhow::Result;
-use log::{info, error};
-use serde::{Deserialize, Serialize};
+pub mod table;
+pub mod chain;
+pub mod target;
+pub mod criteria;
+pub mod rule;
 
-#[derive(Debug, Clone, Serialize, Deserialize)]
-pub struct Config {
-    pub enabled: bool,
-    pub debug: bool,
-}
-
-impl Default for Config {
-    fn default() -> Self {
-        Self { enabled: true, debug: false }
-    }
-}
-
-pub struct iptables {
-    config: Config,
-}
-
-impl iptables {
-    pub fn new(config: Config) -> Self {
-        Self { config }
-    }
-
-    pub fn initialize(&mut self) -> Result<()> {
-        info!("Initializing SigmaOS-iptables");
-        Ok(())
-    }
-
-    pub fn start(&mut self) -> Result<()> {
-        info!("Starting SigmaOS-iptables");
-        Ok(())
-    }
-
-    pub fn stop(&mut self) -> Result<()> {
-        info!("Stopping SigmaOS-iptables");
-        Ok(())
-    }
-}
+pub use table::{Table, TableType};
+pub use chain::{IptablesChain, ChainHook};
+pub use target::{Target, TargetAction};
+pub use criteria::{MatchCriteria, MatchType};
+pub use rule::{IptablesRule, RuleMatch};
