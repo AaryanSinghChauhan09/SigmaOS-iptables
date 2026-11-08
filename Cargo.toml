@@ -2,10 +2,9 @@
 name = "sigmaos_iptables"
 version = "0.1.0"
 edition = "2021"
-description = "SigmaOS iptables/netfilter model: tables, chains, targets, match criteria, rules"
+license = "MIT"
+description = "SigmaOS iptables component inspired by Linux Mint / Omarchy / Arch Linux."
 
 [lib]
 name = "sigmaos_iptables"
 path = "src/lib.rs"
-
-[dependencies]
